@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "ai-hotspot-tracker": {
+      "command": "node",
+      "args": ["skills/mcp-server.js"],
+      "cwd": "D:/AiProgram/mine/ai-hotspot-tracker",
+      "env": {
+        "OPENROUTER_API_KEY": "your-openrouter-key-here",
+        "TWITTER_API_KEY": "your-twitterapi-io-key-here"
+      }
+    }
+  }
+}
