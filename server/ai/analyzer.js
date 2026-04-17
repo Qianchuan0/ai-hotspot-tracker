@@ -6,8 +6,8 @@ import { get, all, run } from '../db.js';
  * 分析管道：对未分析的热点内容执行AI分析
  */
 export async function analyzeUnanalyzed() {
-  if (!process.env.OPENROUTER_API_KEY) {
-    console.warn('[AI] OPENROUTER_API_KEY not set, skipping analysis');
+  if (!process.env.GLM_API_KEY && !process.env.DEEPSEEK_API_KEY) {
+    console.warn('[AI] No AI API keys set, skipping analysis');
     return;
   }
 

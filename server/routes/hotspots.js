@@ -32,14 +32,17 @@ router.get('/', (req, res) => {
       params.push(credibility);
     }
     if (keyword) {
-      conditions.push(`
+      conditions.push(`(
         h.id IN (
           SELECT hk.hotspot_id FROM hotspot_keywords hk
           JOIN keywords k ON hk.keyword_id = k.id
           WHERE k.word LIKE ?
         )
-      `);
-      params.push(`%${keyword}%`);
+        OR h.title LIKE ?
+        OR h.summary LIKE ?
+        OR h.raw_content LIKE ?
+      )`);
+      params.push(`%${keyword}%`, `%${keyword}%`, `%${keyword}%`, `%${keyword}%`);
     }
 
     const where = conditions.length > 0 ? 'WHERE ' + conditions.join(' AND ') : '';

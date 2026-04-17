@@ -45,6 +45,9 @@ dist/
 data/
 *.db
 
+# IDE
+.idea/
+
 # OS files
 .DS_Store
 Thumbs.db

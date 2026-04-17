@@ -8,8 +8,9 @@ const API_BASE = 'https://api.twitterapi.io';
 export class TwitterCollector extends BaseCollector {
   constructor() {
     super('twitter');
-    this.apiKey = process.env.TWITTER_API_KEY;
   }
+
+  get apiKey() { return process.env.TWITTER_API_KEY; }
 
   /**
    * 搜索关键词相关推文

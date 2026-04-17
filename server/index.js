@@ -1,19 +1,19 @@
-import express from 'express';
-import cors from 'cors';
+// 先加载 .env，必须在所有 import 之前
 import { config } from 'dotenv';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+config({ path: join(__dirname, '..', '.env'), override: true });
+
+import express from 'express';
+import cors from 'cors';
 import { initDB } from './db.js';
 import keywordsRouter from './routes/keywords.js';
 import hotspotsRouter from './routes/hotspots.js';
 import notificationsRouter from './routes/notifications.js';
 import eventsRouter from './routes/events.js';
 import { startScheduler } from './collectors/scheduler.js';
-
-// 加载 .env
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-config({ path: join(__dirname, '..', '.env') });
 
 const app = express();
 const PORT = process.env.PORT || 3001;
